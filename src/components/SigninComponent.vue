@@ -7,7 +7,7 @@
         <div class="signin-card d-flex flex-column ">
             <div class="header d-flex flex-row justify-content-between align-items-center mb-2 pt-2 ps-3 pe-3">
                 <div class="logo"><h5 class="fs-5 fw-bold text-dark d-flex align-items-center gap-2"> <span class="text-primary onerem d-block hotel">IMS</span></h5></div>
-                <div class="links onerem about"><a href="#">{{signin}}</a></div>
+                <div class="links onerem about"><a href="#">{{ signin }}</a></div>
             </div>
 
             <div class="body  d-flex flex-row gap-2">
