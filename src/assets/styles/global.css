@@ -1,0 +1,51 @@
+
+:root{
+    --bg-primary: white;
+}
+.header-links .profile{
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+}
+header{
+    z-index: 100;
+}
+.loading-website{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: var(--bg-primary);
+    z-index: 999;
+}
+.loading-website h1{
+    transform: translateY(100%);
+    position: relative;
+}
+body{
+    width: 100vw;
+    height: 100vh;
+    overflow-x: hidden;
+}
+.pointer{
+    cursor: pointer;
+}
+.main-container{
+    position: absolute;
+    width: 100vw;
+    height: 90vh;
+    
+}
+.main-container .left{
+    position: relative;
+    width: 20%;
+    height: 100%;
+    border-radius: 0 20px 20px 0;
+}
+.main-container .right{
+    position: relative;
+    width: 80%;
+    height: 100%;
+    background: #000;
+}
