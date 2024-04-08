@@ -47,7 +47,7 @@
            <div class="show-password-container container d-flex gap-2 flex-row align-items-center mt-0" v-if="signupIsClicked">
            <input type="checkbox" id="showPassCheckbox" @click="showPassFuncForSignup">
                 <p v-if="showPassword" class="text-muted mt-3">Show password</p>
-                <p v-if="!showPassword"  class="text-muted mt-3">Hide password</p>
+               
            </div>
 
              <div class="button-container">
@@ -113,15 +113,69 @@
     name: 'SigninComponent',
     data(){
         return{
-            signin: false
+            signin: false,
+            username: 'Jobel v. Golde',
+            password: 'nonong123',
+            showPassword: true
         }
     },
     methods: {
-        async fetchData(){
-            const res = await fetch('../backend/main.php')
-            const data = await res.json()
-            console.log(data)
+        async fetchData() {
+      try {
+        const response = await fetch('http://localhost:8080/inventory_management_system_project/backend/main.php');
+        if (!response.ok) {
+          throw new Error('Failed to fetch data');
+        } 
+        const data = await response.json();
+        console.log(data);
+      } catch (error) {
+        console.error('Error in fetch:', error);
+      }
+    },
+    adminLoginFunc(){
+        this.signin = true
+        this.$emit('getSigninValue' , this.signin)
+    },
+    showPassFuncForSignup(){
+        let passwordInput = document.getElementById('passwordInput')
+        let confirmPasswordInput =document.getElementById('confirmPasswordInput')
+
+        console.log('clicked the function')
+        if(passwordInput.type === 'password' || confirmPasswordInput === 'password'){
+           passwordInput.type = 'text'
+           confirmPasswordInput = 'text'
+        }else{
+            passwordInput.type = 'password'
+           confirmPasswordInput = 'password'
         }
+    },
+
+    showPassFunc(){
+
+        let passwordInput = document.getElementById('passwordInput')
+        let confirmPasswordInput =document.getElementById('confirmPasswordInput')
+        if(passwordInput.type === 'password' || confirmPasswordInput === 'password'){
+           passwordInput.type = 'text'
+        }else{
+            passwordInput.type = 'password'
+           confirmPasswordInput = 'password'
+        }
+    }
+
+    // fetchData(){
+    //     fetch('/backend/main.php')
+    // .then(res =>{
+    //     return res.json()
+    // })
+
+    // .then(data =>{
+    //     console.log(data)
+    // })
+
+    // .catch(error =>{
+    //     console.log('Fetch Error: ' + error)
+    // })
+    // }
     },
     mounted(){
         this.fetchData()
